@@ -1,31 +1,31 @@
 "use client"
-import React,{useState} from 'react'
-import axios from 'axios'
-import { useRouter } from 'next/navigation'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 
 const insert = () => {
-    const [cardData, setcardData] = useState({heading: '', para: ''});
+    const [cardData, setCardData] = useState({ heading: '', para: '' });
     const router = useRouter();
+  
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setcardData(prevState => ({
-          ...prevState,
-            [name]: value
-        }));
+      const { name, value } = e.target;
+      setCardData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     };
- const handleSubmit = async (e) =>{
-    e.preventDefault();
-    try {
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
         const response = await axios.post('/api/card', cardData);
-        router.push('/')
+        router.push('/');
         console.log(response.data);
-       
-    } catch (error) {
-        alert('There was an error submitting the form:', error);
-    }
- }
-
+      } catch (error) {
+        alert('There was an error submitting the form:' + error);
+      }
+    };
 
   return (
     <>
