@@ -12,7 +12,7 @@ export default function Home({ cardsDataProp }) {
   console.log(cardsData);
   const fetchdata = async () => {
     try {
-      const response = await axios.get("/api/card");
+      const response = await axios.get("/api/imagecard");
       setCardsData(response.data.card);
       console.log("API response:", response.data.card);
     } catch (error) {
@@ -30,9 +30,9 @@ export default function Home({ cardsDataProp }) {
 
     if (isConfirmed) {
       try {
-        await axios.delete(`/api/card/${cardId}`); // Adjust the API endpoint as needed
+        await axios.delete(`/api/imagecard/${cardId}`); // Adjust the API endpoint as needed
         setCardsData(cardsData.filter((card) => card.id !== cardId)); // Remove the card from state
-        router.push("/");
+        router.push("/imagecard");
       } catch (error) {
         console.error("Error deleting the card:", error);
         // Optionally, show an error alert here
@@ -42,9 +42,8 @@ export default function Home({ cardsDataProp }) {
   };
 
   const handleEdit = (cardId) => {
-    router.push(`/updatecard?cardId=${cardId}`);
-};  
-
+    router.push(`/updateimagecard?cardId=${cardId}`);
+  };
 
   return (
     <>
@@ -57,6 +56,14 @@ export default function Home({ cardsDataProp }) {
               className="border-2 mt-2 mb-2 p-2 rounded-lg flex justify-between"
             >
               <div className="w-11/12">
+              
+                  <Image
+                  className="pt-5 rounded"
+                    width={150}
+                    height={150}
+                    src={`/${card.img.replace("public/", "")}`} // Assuming card.img is the path relative to the public directory
+                    alt="card image"
+                  />
                 <h1 className="text-2xl font-bold text-gray-800 mt-5">
                   {card.heading}
                 </h1>
@@ -71,4 +78,8 @@ export default function Home({ cardsDataProp }) {
       </div>
     </>
   );
+}
+
+{
+  /* <img className="rounded-full" width={150} height={150} src={'/uploads/WallpaperDog-10773325.jpg'} alt="card image" /> */
 }

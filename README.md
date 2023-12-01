@@ -34,3 +34,50 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+
+
+
+
+// use this way of method // post or get
+// import { PrismaClient } from '@prisma/client';
+// import { NextResponse } from 'next/server';
+// import formidable from 'formidable';
+// import fs from 'fs'
+// import path from 'path';
+
+
+// const prisma = new PrismaClient();
+
+// const cardpost = async (req) => {
+//   const body = await req.json();
+//   const {img, heading, para } = body;
+//   console.log(body);
+
+//   try {
+//       const card = await prisma.card.create({
+//           data: {
+//               img,
+//               heading,
+//               para
+//           }
+//       });
+//       return new NextResponse(
+//           JSON.stringify({success:"Post created successfully" ,card }),
+//           {status: 200}
+//       );
+      
+//   }
+//   catch (error) {
+//       console.log(error);
+//       return new NextResponse(
+//           JSON.stringify({error:"Post creating error"}),
+//           {status: 400}
+//       )
+//   }
+// }
+
+// export  {cardpost }

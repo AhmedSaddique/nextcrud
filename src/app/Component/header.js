@@ -18,8 +18,14 @@ const Navbar = () => {
                 </div>
                 <div className={`${isOpen ? 'block' : 'hidden'} md:block`}>
                     <ul className="flex flex-col md:flex-row md:space-x-4">
-                        <Link href="/" className="block py-2 px-4 hover:bg-gray-700">Information</Link>
+                        <Link href="/" className="block py-2 px-4 hover:bg-gray-700">insertCard</Link>
                         <Link href="/insert" className="block py-2 px-4 hover:bg-gray-700">Insert</Link>
+                        <Link href="/imagecard" className="block py-2 px-4 hover:bg-gray-700">Imagecard</Link>
+                        <Link href="/imageinsert" className="block py-2 px-4 hover:bg-gray-700">ImageInsert</Link>
+                        <Link href="/upload" className="block py-2 px-4 hover:bg-gray-700">upload</Link>
+                        <Link href="/login" className="block py-2 px-4 hover:bg-gray-700">Login</Link>
+                        <Link href="/signup" className="block py-2 px-4 hover:bg-gray-700">Signup</Link>
+
 
                     </ul>
                 </div>

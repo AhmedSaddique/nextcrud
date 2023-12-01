@@ -1,18 +1,46 @@
-import React from 'react'
+"use client"
+import React,{useState} from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+
 
 const insert = () => {
+    const [cardData, setcardData] = useState({heading: '', para: ''});
+    const router = useRouter();
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setcardData(prevState => ({
+          ...prevState,
+            [name]: value
+        }));
+    };
+ const handleSubmit = async (e) =>{
+    e.preventDefault();
+    try {
+        const response = await axios.post('/api/card', cardData);
+        router.push('/')
+        console.log(response.data);
+       
+    } catch (error) {
+        alert('There was an error submitting the form:', error);
+    }
+ }
+
+
   return (
     <>
-       <form className="max-w-lg mx-auto my-10 p-6 rounded shadow-lg">
+       <form className="max-w-lg mx-auto my-10 p-6 rounded shadow-lg" onSubmit={handleSubmit}>
        <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" >
                         Heading
                     </label>
                     <input 
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                        id="username" 
+                        name="heading" 
                         type="text" 
                         placeholder="Heading" 
+                        value={cardData.heading}
+                        onChange={handleChange}
                     />
                 </div>
             <div className="mb-6">
@@ -20,10 +48,14 @@ const insert = () => {
                     Your Message
                 </label>
                 <textarea 
-                    id="message"
-                    rows="4"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Type your message here..."
+                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 placeholder="Type your message here..."
+                 rows="4"
+
+                    name="para"
+                    value={cardData.para}
+                    onChange={handleChange}
+                   
                 />
             </div>
 
