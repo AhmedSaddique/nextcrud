@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 
-const upload = () => {
+const Upload = () => {
     const [file, setFile] = useState();
 
     const handleChange = (e) => {
@@ -42,4 +42,4 @@ const upload = () => {
   )
 }
 
-export default upload
+export default Upload

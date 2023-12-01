@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-const imageinsert = () => {
+const Imageinsert = () => {
   const [cardData, setCardData] = useState({ img:'', heading: '', para: '' });
   const [file, setFile] = useState();
   const router = useRouter();
@@ -96,4 +96,4 @@ const imageinsert = () => {
   )
 }
 
-export default imageinsert
+export default Imageinsert

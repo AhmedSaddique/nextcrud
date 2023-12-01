@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 
-const insert = () => {
+const Insert = () => {
     const [cardData, setCardData] = useState({ heading: '', para: '' });
     const router = useRouter();
   
@@ -70,4 +70,4 @@ const insert = () => {
   )
 }
 
-export default insert
+export default Insert
