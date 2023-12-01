@@ -58,9 +58,9 @@ export default function Home({ cardsDataProp }) {
               <div className="w-11/12">
               
                   <Image
-                  className="pt-5 rounded"
-                    width={150}
-                    height={150}
+                    width={500 }
+                    height={500}
+                    className={`w-44 h-44 pt-5 rounded-full`}
                     src={`/${card.img.replace("public/", "")}`} // Assuming card.img is the path relative to the public directory
                     alt="card image"
                   />
