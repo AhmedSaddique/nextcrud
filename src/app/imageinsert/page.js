@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-const Imageinsert = () => {
-  const [cardData, setCardData] = useState({ img:'', heading: '', para: '' });
+const ImageInsert = () => {
+  const [cardData, setCardData] = useState({ img: '', heading: '', para: '' });
   const [file, setFile] = useState();
   const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCardData(prevState => ({ ...prevState, [name]: value }));
+    setCardData((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ const Imageinsert = () => {
 
     try {
       const response = await axios.post('/api/imagecard', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log(response.data);
       if (response.data.success) {
@@ -32,7 +32,7 @@ const Imageinsert = () => {
         alert('File upload failed');
       }
     } catch (error) {
-      alert('There was an error submitting the form:', error);
+      alert('There was an error submitting the form:' + error);
     }
   };
 
@@ -96,4 +96,4 @@ const Imageinsert = () => {
   )
 }
 
-export default Imageinsert
+export default ImageInsert
